@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Favorite Book table</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+  
+</head> 
+  <body>
+    
+    <div id="content">
+      <h1>The best books of all time according to <span id="you">you</span>.</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+          </tr>
+        </thead>
+        <tbody id="input">
+        </tbody>
+      </table>
+      
+      <button id="add" name="add" onClick="pageSwap();">Add your favorite books</button>
+    </div>
+    
+    <div id="form">
+      <form id="bookForm" method="post" action="#">
+        <h2>What are the best books of all time?</h2>
+        <p>
+          <label>Title:</label>
+          <input id="title" type="text" name="Title" placeholder="The Poisonwood Bible" required>
+        </p>
+        <p>
+          <label>Author:</label>
+          <input id="author" type="text" name="Author" placeholder="Barbara Kingsolver" required>
+        </p>
+        <p>
+          <label>Genre:</label>
+          <input id="genre" type="text" name="Genre" placeholder="Literature" required>
+        </p>
+        
+        <p>
+          <label>Your name:</label>
+          <input id="name" type="text" name="Name" placeholder="Emilie" required>
+        </p>
+        
+        <input type="submit" value="Another!" name="submit" onClick="addName(); addBook(); clearForm(); return false;">
+        
+        <input type="submit" value="Show me my list" name="submit" onClick="addName(); addBook(); pageSwapOp(); clearForm(); return false;">
+      </form>
+      
+    </div>
+  
+    <script> 
+  
+      function addBook(){  
+        var title = document.getElementById('title').value;
+        var author =  document.getElementById('author').value;
+        var genre = document.getElementById('genre').value;
+        document.getElementById('input').innerHTML += "<tr> <td>" + title + "</td> <td>" + author + "</td> <td>" + genre + "</td> </tr>";
+      }
+      
+      function addName(){
+        var name = document.getElementById('name').value;
+        document.getElementById('you').innerHTML = "<span>" + name + "</span>";
+      }
+    
+      function clearForm(){
+        document.getElementById('title').value = '';
+        document.getElementById('author').value = '';
+        document.getElementById('genre').value = '';
+      }
+      
+      function pageSwap(){
+        document.getElementById('content').style.display="none";
+        document.getElementById('form').style.display="block";
+      }
+      
+      function pageSwapOp(){
+        document.getElementById('content').style.display="block";
+        document.getElementById('form').style.display="none";
+      }
+    
+    </script>
+  </body>
+</html> 
